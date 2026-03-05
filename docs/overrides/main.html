@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ---- Hero Section ---- #}
+{%- set hero_title    = page.meta.hero_title    | default(page.title) -%}
+{%- set hero_subtitle = page.meta.hero_subtitle | default("") -%}
+{%- set hero_image    = page.meta.hero_image    | default("") -%}
+{%- set hero_cta      = page.meta.hero_cta      | default([]) -%}
+{%- set hide_hero     = page.meta.hide_hero     | default(false) -%}
+
+{% if not hide_hero %}
+<section
+  class="sb-hero"
+  role="banner"
+  aria-label="Page hero"
+  {% if hero_image %}data-hero-image="{{ hero_image | url }}"{% endif %}
+>
+  <div class="sb-hero__content">
+    <h1 class="sb-hero__title">{{ hero_title }}</h1>
+    {% if hero_subtitle %}
+    <p class="sb-hero__subtitle">{{ hero_subtitle }}</p>
+    {% endif %}
+    {% if hero_cta %}
+    <nav class="sb-hero__cta" aria-label="Hero calls to action">
+      {% for btn in hero_cta %}
+      <a
+        href="{{ btn.url }}"
+        class="sb-btn sb-btn--{{ btn.style | default('primary') }}"
+        {% if btn.external %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >{{ btn.label }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{# ---- Regular page content (Material base handles article wrapper) ---- #}
+{{ super() }}
+
+{% endblock %}
