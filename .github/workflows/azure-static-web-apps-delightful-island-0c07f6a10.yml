@@ -45,8 +45,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           skip_app_build: true
-          app_location: /
-          app_artifact_location: site
+          app_location: site
           config_file_location: /
 
   close_pull_request_job:
