@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#6c3de0"/>
+      <stop offset="50%"  stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <!-- Decorative blobs -->
+  <circle cx="200"  cy="120" r="180" fill="#06b6d4" opacity="0.18" filter="url(#blur)"/>
+  <circle cx="900"  cy="360" r="220" fill="#6c3de0" opacity="0.20" filter="url(#blur)"/>
+  <circle cx="600"  cy="240" r="150" fill="#a855f7" opacity="0.12" filter="url(#blur)"/>
+  <!-- Subtle dots pattern -->
+  <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.5" fill="white" opacity="0.08"/>
+  </pattern>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+</svg>

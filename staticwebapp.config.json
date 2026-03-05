@@ -1,0 +1,35 @@
+{
+  "routes": [
+    {
+      "route": "/blog",
+      "redirect": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "route": "/contact",
+      "redirect": "/contact/",
+      "statusCode": 301
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/404.html",
+    "exclude": ["/assets/*", "/stylesheets/*", "/javascripts/*", "*.{css,js,svg,png,jpg,ico,woff2}"]
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-XSS-Protection": "1; mode=block",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self'"
+  },
+  "mimeTypes": {
+    ".svg": "image/svg+xml"
+  }
+}
