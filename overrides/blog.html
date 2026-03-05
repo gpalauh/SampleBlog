@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block container %}
+  {#- Hero section rendered inside md-content for correct layout -#}
+  {%- set hero_title    = page.meta.hero_title    | default(page.title) -%}
+  {%- set hero_subtitle = page.meta.hero_subtitle | default("") -%}
+  {%- set hero_image    = page.meta.hero_image    | default("") -%}
+  {%- set hide_hero     = page.meta.hide_hero     | default(false) -%}
+
+  <div class="md-content" data-md-component="content">
+    {% if not hide_hero %}
+    <section
+      class="sb-hero sb-hero--blog"
+      role="banner"
+      aria-label="Page hero"
+      {% if hero_image %}data-hero-image="{{ hero_image | url }}"{% endif %}
+    >
+      <div class="sb-hero__content">
+        <h1 class="sb-hero__title">{{ hero_title }}</h1>
+        {% if hero_subtitle %}
+        <p class="sb-hero__subtitle">{{ hero_subtitle }}</p>
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        {{ page.content }}
+      </header>
+      {% for post in posts %}
+        {% include "partials/post.html" %}
+      {% endfor %}
+      {% if pagination %}
+        {% block pagination %}
+          {% include "partials/pagination.html" %}
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
